@@ -37,7 +37,7 @@ services:
 
     # The Database
     laravel_database:
-        image: mariadb:10.2
+        image: mariadb
         container_name: laravel-mysql
         volumes:
             - "./docker/db:/docker-entrypoint-initdb.d"
