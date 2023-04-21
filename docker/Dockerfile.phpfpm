@@ -1,7 +1,7 @@
-FROM php:7.2-fpm
+FROM php:8.1-fpm
 
 ENV WORKDIR=/var/www/laravel \
-    NODE_VERSION=8.11.1
+    NODE_VERSION=18.16.0
 
 # Install common tools and libraries
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -52,7 +52,7 @@ RUN apt-get install -y zlib1g-dev \
 RUN curl -sS https://getcomposer.org/installer | \
     php -- --install-dir=/usr/local/bin --filename=composer
 
-# Install Node.js (LTS version 8.11.1)
+# Install Node.js (LTS version 18.16.0)
 RUN curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" \
     && tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1 --no-same-owner \
     && rm "node-v$NODE_VERSION-linux-x64.tar.xz" \
@@ -62,7 +62,7 @@ RUN curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE
 
 # Set your timezone here
 RUN rm /etc/localtime
-RUN ln -s /usr/share/zoneinfo/Australia/Brisbane /etc/localtime
+RUN ln -s /usr/share/zoneinfo/Asia/Tehran /etc/localtime
 RUN "date"
 
 # Clean
